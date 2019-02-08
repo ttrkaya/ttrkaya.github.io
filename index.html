@@ -99,10 +99,6 @@ window.onload = function() {
 	canvasContext = canvas.getContext("2d");
 	canvasContext.font = "bold 20px Calibri";
 
-  document.onmousemove = document.ontouchmove = function(e) {
-    mousePos.x = e.pageX;
-    mousePos.y = e.pageY;
-  };
   document.onmousedown = document.ontouchstart = function(e) {
     mouseEventDown = true;
     mouseEventUp = false;
@@ -111,6 +107,15 @@ window.onload = function() {
     mouseEventUp = true;
     mouseEventDowmn = false;
   };
+  document.onmousemove = function(e) {
+    mousePos.x = e.pageX;
+    mousePos.y = e.pageY;
+  };
+  document.ontouchmove = function(e) {
+    var touch = e.touches[0];
+    mousePos.x = touch.pageX;
+    mousePos.y = touch.pageY;
+  }
 
   tick();
 };
