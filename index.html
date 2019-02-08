@@ -1,6 +1,7 @@
 <html>
   <head>
 	 <title>Web Game Template</title>
+   <meta name="viewport" content="width=device-width, user-scalable=no" />
 	 <script>
 
 const CANVAS_W = 400;
@@ -82,7 +83,7 @@ function tick() {
     mouseDown = false;
   }
 
-  if(mouseDownJust()){
+  if(mouseDown){
     pos.x = mousePos.x;
     pos.y = mousePos.y;
   }
