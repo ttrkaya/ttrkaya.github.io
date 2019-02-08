@@ -110,6 +110,12 @@ window.onload = function() {
   document.ontouchstart = document.ontouchend = function(e) {
     mouseEventDown = (e.touches.length > 0);
     mouseEventUp = !mouseEventDown;
+
+    if(mouseEventDown){
+      var touch = e.touches[0];
+      mousePos.x = touch.pageX;
+      mousePos.y = touch.pageY;
+    }
   };
   document.onmousemove = function(e) {
     mousePos.x = e.pageX;
