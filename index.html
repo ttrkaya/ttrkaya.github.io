@@ -99,13 +99,17 @@ window.onload = function() {
 	canvasContext = canvas.getContext("2d");
 	canvasContext.font = "bold 20px Calibri";
 
-  document.onmousedown = document.ontouchstart = function(e) {
+  document.onmousedown = function(e) {
     mouseEventDown = true;
-    mouseEventUp = false;
+    mouseEventUp = !mouseEventDown;
   };
-  document.onmouseup = document.ontouchend = function(e) {
+  document.onmouseup = function(e) {
     mouseEventUp = true;
-    mouseEventDowmn = false;
+    mouseEventDowmn = !mouseEventUp;
+  };
+  document.ontouchstart = document.ontouchend = function(e) {
+    mouseEventDown = (e.touches.length > 0);
+    mouseEventUp = !mouseEventDown;
   };
   document.onmousemove = function(e) {
     mousePos.x = e.pageX;
