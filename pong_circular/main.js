@@ -1,8 +1,9 @@
-const CANVAS_W = 400;
-const CANVAS_H = 400;
+const CANVAS_W = 700;
+const CANVAS_H = CANVAS_W;
 
-const ARENA_R = 175;
-const CENTER_R = 7;
+const ARENA_R = 330;
+const CENTER_R = 25;
+const BALL_R = 15;
 
 class Vec {
   constructor(x, y) {
@@ -61,9 +62,9 @@ function lineSegmentCircleCollides(c, r, a, b) {
 const CENTER = new Vec(CANVAS_W / 2, CANVAS_H / 2);
 
 const ball = {
-  r: 5,
   pos: new Vec(),
-  vel: new Vec()
+  vel: new Vec(),
+  r: BALL_R,
 };
 
 let canvas = null;
@@ -208,13 +209,16 @@ function tick() {
   gfx.stroke();
 
   gfx.fillStyle = "green";
+  gfx.strokeStyle = "black";
   gfx.beginPath();
   paddleCornerA.move(gfx);
   paddleCornerB.line(gfx);
   let offset = paddleNormal.copy().scale(-20);
   paddleCornerB.copy().add(offset).line(gfx);
   paddleCornerA.copy().add(offset).line(gfx);
+  gfx.closePath();
   gfx.fill();
+  gfx.stroke();
 
   gfx.fillStyle = "white";
   gfx.beginPath();
